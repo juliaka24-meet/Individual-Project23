@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+   <html>
+     <head>
+
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+      <script>
+        var score = 0 
+        var chosen_state = ""
+        let arr = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Minor Outlying Islands", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+        var today = new Date();
+        var start_time = today.getMinutes();
+
+
+      function start_game(){
+        document.getElementById("start").style.display = 'none';
+      }
+
+      function random_state() {
+          document.getElementById("state").innerHTML=(arr[(Math.floor(Math.random() * arr.length))]);
+      }
+
+      function check_state(chosen_state){
+          if (document.getElementById("state").innerHTML== chosen_state){
+            score ++;
+            alert("Hello! I am an alert box!!");
+            game_over();
+          }
+        }
+
+       function game_over(){
+        if (score==1){
+          var today = new Date();
+          var end_time = today.getMinutes();
+          //in case the hour has changed 
+          if (end_time < start_time){
+            var num1 = 60 - start_time
+            time_diff = num1 + end_time
+          }
+          else{
+          var time_diff = end_time - start_time; 
+        }
+          alert(time_diff);
+        }
+}
+      
+      
+
+
+      </script>
+      
+
+        <button type="button" id="start" onclick="random_state(); start_game()"> Start game </button>
+        <h1 id="state"></h1>
+       <style>
+
+       .img { 
+       width:70%;
+       height: auto;
+       top:0;
+       left:0;
+       position: relative; 
+       z-index: 1;
+       } 
+
+       .anybutton {
+       top:23%;
+       left:10%;
+       width:100px;
+       height:40px;
+       position: absolute;
+       z-index: 2;
+       background: orange; 
+       }
+
+      </style>
+   </head>
+
+     <body style="text-align:center; margin: 0px;">
+
+       <div class="mycenter" id="">
+          <img src='static/usmap.jpg' class="img" id="img" /> 
+          <button type="button" class="anybutton" id="washington" onclick='check_state("washington")' name="washington"> right here </button>
+       </div>
+
+       
+      </body>
+</html>
