@@ -23,6 +23,7 @@
       }
 
       function check_state(chosen_state){
+        console.log(arr)
           if (document.getElementById("state").innerHTML== chosen_state){
             score ++;
             alert("Hello! I am an alert box!!");
@@ -51,9 +52,10 @@
           var final_score = time_diff + errors;
           alert(time_diff);
         }
-         /*/$.post( "/map", {
+        console.log("hi")
+         $.post( "/map", {
             "final_score": final_score 
-          });/*/
+          });
 }
       
       
