@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import session as login_session
 import pyrebase
+import json
 from datetime import datetime
 
 now = datetime.now()
@@ -60,9 +61,16 @@ def signup():
 
     return render_template("signup.html")
 
-@app.route('/map')
+@app.route('/map', methods = ["GET", "POST"])
 def map():
+    if request.method ==  "POST":
+        UID = login_session['user']['localId']
+        final_score = request.form["final_score"]
+        final_score = json.loads(final_score)[0]
+        print(final_score)
+        return render_template('map.html')
     return render_template('map.html')
+
 
 
 
