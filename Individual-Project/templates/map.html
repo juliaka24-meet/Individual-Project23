@@ -1,14 +1,152 @@
 <!DOCTYPE html>
    <html>
      <head>
+      <meta content="en-us" http-equiv="Content-Language">
+<meta charset="utf-8">
+<meta content="stuff, to, help, search, engines, not" name="keywords">
+<meta content="What this page is about." name="description">
+<meta content="An Interesting Title Goes Here" name="title">
+<title>Move to Click Position</title>
+<style type="text/css">
+.img { 
+       width:70%;
+       height: auto;
+       top:0;
+       left:0;
+       position: relative; 
+       z-index: 1;
+       } 
 
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-      <script>
+       .button-5 {
+       align-items: center;
+        background-clip: padding-box;
+        background-color: #fa6400;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+       }
+       .button-5:hover,
+        .button-5:focus {
+          background-color: #fb8332;
+          box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        }
+
+        .button-5:hover {
+          transform: translateY(-1px);
+        }
+
+        .button-5:active {
+          background-color: #c85000;
+          box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+          transform: translateY(0);
+        }
+
+        .anybutton {
+          top:23%;
+       left:10%;
+       position: absolute;
+       z-index: 2;
+       background: orange; 
+       display:block;
+       height: 30px;
+       width: 30px;
+       border-radius: 50%;
+       border: 1px solid red;
+
+        }
+        #contentContainer {
+       height: auto;
+       top:0px;
+       left:0px;
+       
+}
+#thing {
+  width:70%;
+       height: auto;
+       top:0;
+       left:0;
+       position: relative; 
+       z-index: 1;
+}
+
+
+
+      </style>
+     
+      
+      
+
+        <button class="button-5" type="button" id="start" onclick="random_state(); start_game()"> Start game </button>
+        <h1 id="state"></h1>
+
+       
+   </head>
+
+     <body style="text-align:center; margin: 0px;">
+
+       <div class="mycenter" id="">
+        <div class="mycenter" id="contentContainer">
+<img id="thing" src="static/usmap2.png">
+</div>
+          <button type="button" class="anybutton" style="transform: translate(600%, -270%);" id="Washington" 
+          onclick='check_state("Washington")'></button>
+          <button type="button" class="anybutton" style="transform: translate(550%, 370%);"  id="California" onclick='check_state("California")' ></button>
+          <button type="button" class="anybutton" style="transform: translate(600%, 90%);" id="Oregon" onclick='check_state("Oregon")' ></button>
+          <button type="button" class="anybutton" style="transform: translate(985%, -90%);" id="Idaho" onclick='check_state("Idaho")' ></button>
+          <button type="button" class="anybutton" style="top:65%; left:65%;" id="Alabama" onclick='check_state("Alabama")' ></button>
+          <button type="button" class="anybutton" style="top:64%; left:70%;" id="Georgia" onclick='check_state("Georgia")' ></button>
+          <button type="button" class="anybutton" style="top:68%; left:70%;" id="Florida" onclick='check_state("Florida")' ></button>
+          <button type="button" class="anybutton" style="top:59%; left:73%;" id="South Carolina" onclick='check_state("South Carolina")' ></button>
+          <button type="button" class="anybutton" style="top:51%; left:73%;" id="North Carolina" onclick='check_state("North Carolina")' ></button>
+          <button type="button" class="anybutton" style="top:43%; left:73%;" id="Virginia" onclick='check_state("Virginia")' ></button>
+          <button type="button" class="anybutton" style="top:43%; left:70%;" id="West Virginia" onclick='check_state("West Virginia")' ></button>
+          <button type="button" class="anybutton" style="top:39%; left:75%;" id="Maryland" onclick='check_state("Maryland")' ></button>
+          <button type="button" class="anybutton" style="top:38%; left:77%;" id="Delaware" onclick='check_state("Delaware")' ></button>
+          <button type="button" class="anybutton" style="top:35%; left:77%;" id="New Jersey" onclick='check_state("New Jersey")' ></button>
+          <button type="button" class="anybutton" style="top:35%; left:72%;" id="Pennsylvania" onclick='check_state("Pennsylvania")' ></button>
+          <button type="button" class="anybutton" style="top:29%; left:72%;" id="New York" onclick='check_state("New York")' ></button>
+          
+       </div>
+
+      <form id="Final_score" action="/map" method="post">
+          <input type="hidden" name="jsvar" id="jsvar" value="" />
+          </form>
+       
+       <script>
+var theThing = document.querySelector("#thing");
 
         var container = document.querySelector("#contentContainer");
         container.addEventListener("click", getClickPosition, false);
 
-        function getPosition(el) {
+        function getClickPosition(e) {
+  var parentPosition = getPosition(e.currentTarget);
+  var xPosition = e.clientX - parentPosition.x - (theThing.clientWidth / 2);
+  var yPosition = e.clientY - parentPosition.y - (theThing.clientHeight / 2);
+  
+  console.log(xPosition);
+  console.log(yPosition);
+}
+function getPosition(el) {
   var xPos = 0;
   var yPos = 0;
 
@@ -98,99 +236,5 @@
 
 
       </script>
-      
-
-        <button class="button-5" type="button" id="start" onclick="random_state(); start_game()"> Start game </button>
-        <h1 id="state"></h1>
-       <style>
-
-       .img { 
-       width:70%;
-       height: auto;
-       top:0;
-       left:0;
-       position: relative; 
-       z-index: 1;
-       } 
-
-       .button-5 {
-       align-items: center;
-        background-clip: padding-box;
-        background-color: #fa6400;
-        border: 1px solid transparent;
-        border-radius: .25rem;
-        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-        box-sizing: border-box;
-        color: #fff;
-        cursor: pointer;
-        display: inline-flex;
-        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        justify-content: center;
-        line-height: 1.25;
-        margin: 0;
-        min-height: 3rem;
-        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-        position: relative;
-        text-decoration: none;
-        transition: all 250ms;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        vertical-align: baseline;
-        width: auto;
-       }
-       .button-5:hover,
-        .button-5:focus {
-          background-color: #fb8332;
-          box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-        }
-
-        .button-5:hover {
-          transform: translateY(-1px);
-        }
-
-        .button-5:active {
-          background-color: #c85000;
-          box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-          transform: translateY(0);
-        }
-
-        .anybutton {
-          top:23%;
-       left:10%;
-       position: absolute;
-       z-index: 2;
-       background: orange; 
-       display:block;
-       height: 30px;
-       width: 30px;
-       border-radius: 50%;
-       border: 1px solid red;
-
-        }
-
-
-
-      </style>
-   </head>
-
-     <body style="text-align:center; margin: 0px;">
-
-       <div class="mycenter" id="">
-        <div id="contentContainer">
-          <img src='static/usmap2.png' class="img" id="img" /> 
-        </div>
-          <button type="button" class="anybutton" style="transform: translate(-191%, -332%);" id="Washington" 
-          onclick='check_state("Washington")' name="Washington"></button>
-          <button type="button" class="anybutton" style="top:45%; left:21%;" id="California" onclick='check_state("California")' name="Washington"></button>
-          <button type="button" class="anybutton" style="top:45%; left:50%;" id="Alabama" onclick='check_state("Alabama")' name="Washington"></button>
-       </div>
-
-      <form id="Final_score" action="/map" method="post">
-          <input type="hidden" name="jsvar" id="jsvar" value="" />
-          </form>
-       
       </body>
 </html>
