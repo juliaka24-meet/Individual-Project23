@@ -112,10 +112,18 @@ section{
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
         <tr>
-          <td>AAC</td>
-          <td>AUSTRALIAN COMPANY </td>
-          <td>$1.38</td>
           
+          {%for score_value in list_scores%}
+          {%for score in scores%}
+          {%if score_value == scores[score]["final_score"]%}
+                    <br>
+          <td>rank</td>
+          <td>{{scores[score]["username"]}}</td>
+          <td>{{scores[score]["final_score"]}}</td>
+          <br>
+          {%endif%}
+          {%endfor%}
+          {%endfor%}
         </tr>
   <script>$(window).on("load resize ", function() {
   var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();

@@ -54,11 +54,15 @@ def signup():
             UID = login_session['user']['localId']
             user = {'username':username, 'email':email, 'password':password}
             db.child('Users').child(UID).set(user)
-            return redirect(url_for('map'))
+            return redirect(url_for('games'))
         except:
             return render_template("signup.html")
 
     return render_template("signup.html")
+
+@app.route('/games')
+def games():
+    return render_template('games.html')
 
 @app.route('/map', methods = ["GET", "POST"])
 def map():
@@ -80,7 +84,14 @@ def map():
 
 @app.route('/ranking')
 def ranking():
-    return render_template('ranking.html')
+    scores = db.child('Scores').get().val()
+    UID = login_session['user']['localId']
+    print(scores)
+    list_scores = []
+    for score in scores:
+        list_scores.append(scores[score]["final_score"])
+    list_scores.sort()
+    return render_template('ranking.html',scores=scores, list_scores=list_scores)
    
 
 
