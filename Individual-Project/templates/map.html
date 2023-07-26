@@ -4,6 +4,36 @@
 
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
       <script>
+
+        var container = document.querySelector("#contentContainer");
+        container.addEventListener("click", getClickPosition, false);
+
+        function getPosition(el) {
+  var xPos = 0;
+  var yPos = 0;
+
+  while (el) {
+    if (el.tagName == "BODY") {
+      // deal with browser quirks with body/window/document and page scroll
+      var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
+      var yScroll = el.scrollTop || document.documentElement.scrollTop;
+
+      xPos += (el.offsetLeft - xScroll + el.clientLeft);
+      yPos += (el.offsetTop - yScroll + el.clientTop);
+    } else {
+      // for all other non-BODY elements
+      xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+      yPos += (el.offsetTop - el.scrollTop + el.clientTop);
+    }
+
+    el = el.offsetParent;
+  }
+  return {
+    x: xPos,
+    y: yPos
+  };
+}
+
         var score = 0 
         var errors = 0 
         var chosen_state = ""
@@ -19,11 +49,17 @@
 
       function random_state() {
           document.getElementById("state").innerHTML=(arr[(Math.floor(Math.random() * arr.length))]);
-          arr.pop(document.getElementById("state"));
+          console.log("hiiiii");
+          console.log(document.getElementById("state").innerHTML);
+          const index = arr.indexOf(document.getElementById("state").innerHTML);
+          if (index > -1) { // only splice array when item is found
+            arr.splice(index, 1); // 2nd parameter means remove one item only
+          }
+          console.log(arr); 
       }
 
       function check_state(chosen_state){
-        console.log(arr)
+
           if (document.getElementById("state").innerHTML== chosen_state){
             score ++;
             alert("Hello! I am an alert box!!");
@@ -50,12 +86,12 @@
         }
          
           var final_score = time_diff + errors;
-          alert(time_diff);
+          alert(final_score);
+          var form = document.getElementById("Final_score")
+                var input = document.getElementById("jsvar");
+                input.value = final_score;
+                form.submit();
         }
-        console.log("hi")
-         $.post( "/map", {
-            "final_score": final_score 
-          });
 }
       
       
@@ -64,7 +100,7 @@
       </script>
       
 
-        <button type="button" id="start" onclick="random_state(); start_game()"> Start game </button>
+        <button class="button-5" type="button" id="start" onclick="random_state(); start_game()"> Start game </button>
         <h1 id="state"></h1>
        <style>
 
@@ -77,8 +113,52 @@
        z-index: 1;
        } 
 
-       .anybutton {
-       top:23%;
+       .button-5 {
+       align-items: center;
+        background-clip: padding-box;
+        background-color: #fa6400;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+       }
+       .button-5:hover,
+        .button-5:focus {
+          background-color: #fb8332;
+          box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        }
+
+        .button-5:hover {
+          transform: translateY(-1px);
+        }
+
+        .button-5:active {
+          background-color: #c85000;
+          box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+          transform: translateY(0);
+        }
+
+        .anybutton {
+          top:23%;
        left:10%;
        position: absolute;
        z-index: 2;
@@ -88,7 +168,10 @@
        width: 30px;
        border-radius: 50%;
        border: 1px solid red;
-       }
+
+        }
+
+
 
       </style>
    </head>
@@ -96,12 +179,18 @@
      <body style="text-align:center; margin: 0px;">
 
        <div class="mycenter" id="">
+        <div id="contentContainer">
           <img src='static/usmap2.png' class="img" id="img" /> 
-          <button type="button" class="anybutton" style="top:23%; left:20%;" id="Washington" onclick='check_state("Washington")' name="Washington"></button>
+        </div>
+          <button type="button" class="anybutton" style="transform: translate(-191%, -332%);" id="Washington" 
+          onclick='check_state("Washington")' name="Washington"></button>
           <button type="button" class="anybutton" style="top:45%; left:21%;" id="California" onclick='check_state("California")' name="Washington"></button>
           <button type="button" class="anybutton" style="top:45%; left:50%;" id="Alabama" onclick='check_state("Alabama")' name="Washington"></button>
        </div>
 
+      <form id="Final_score" action="/map" method="post">
+          <input type="hidden" name="jsvar" id="jsvar" value="" />
+          </form>
        
       </body>
 </html>

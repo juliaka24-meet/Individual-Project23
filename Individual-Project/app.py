@@ -65,8 +65,7 @@ def signup():
 def map():
     if request.method ==  "POST":
         UID = login_session['user']['localId']
-        final_score = request.form["final_score"]
-        final_score = json.loads(final_score)[0]
+        final_score = request.form["jsvar"]
         print(final_score)
         return render_template('map.html')
     return render_template('map.html')
