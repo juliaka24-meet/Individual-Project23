@@ -115,23 +115,21 @@
           <button type="button" class="anybutton" style="top:32%; left:30%;" id="Idaho" onclick='check_state("Idaho")' ></button>
           <button type="button" class="anybutton" style="top:65%; left:65%;" id="Alabama" onclick='check_state("Alabama")' ></button>
           <button type="button" class="anybutton" style="top:64%; left:70%;" id="Georgia" onclick='check_state("Georgia")' ></button>
-          <button type="button" class="anybutton" style="top:73%; left:70%;" id="Florida" onclick='check_state("Florida")' ></button>
+          <button type="button" class="anybutton" style="top:74%; left:70%;" id="Florida" onclick='check_state("Florida")' ></button>
           <button type="button" class="anybutton" style="top:62%; left:73%;" id="South Carolina" onclick='check_state("South Carolina")' ></button>
           <button type="button" class="anybutton" style="top:55%; left:73%;" id="North Carolina" onclick='check_state("North Carolina")' ></button>
           <button type="button" class="anybutton" style="top:47%; left:73%;" id="Virginia" onclick='check_state("Virginia")' ></button>
           <button type="button" class="anybutton" style="top:46%; left:70%;" id="West Virginia" onclick='check_state("West Virginia")' ></button>
-          <button type="button" class="anybutton" style="top:44%; left:78%;" id="Maryland" onclick='check_state("Maryland")' ></button>
-          <button type="button" class="anybutton" style="top:42%; left:77%;" id="Delaware" onclick='check_state("Delaware")' ></button>
-          <button type="button" class="anybutton" style="top:35%; left:77%;" id="New Jersey" onclick='check_state("New Jersey")' ></button>
+          <button type="button" class="anybutton" style="top:45%; left:78%;" id="Maryland" onclick='check_state("Maryland")' ></button>
+          <button type="button" class="anybutton" style="top:43%; left:77%;" id="Delaware" onclick='check_state("Delaware")' ></button>
+          <button type="button" class="anybutton" style="top:36%; left:77%;" id="New Jersey" onclick='check_state("New Jersey")' ></button>
           <button type="button" class="anybutton" style="top:38%; left:72%;" id="Pennsylvania" onclick='check_state("Pennsylvania")' ></button>
           <button type="button" class="anybutton" style="top:31%; left:74%;" id="New York" onclick='check_state("New York")' ></button>
           <button type="button" class="anybutton" style="top:22%; left:77%;" id="Vermont" onclick='check_state("Vermont")' ></button>
           <button type="button" class="anybutton" style="top:31%; left:79%;" id="Connecticut" onclick='check_state("Connecticut")' ></button>
-          <button type="button" class="anybutton" style="top:27%; left:80%;" id="Massachusetts" onclick='check_state("Massachusetts")' ></button>
-          <button type="button" class="anybutton" style="top:29%; left:81%;" id="Rhode Island
-" onclick='check_state("Rhode Island")' ></button>
-          <button type="button" class="anybutton" style="top:22%; left:79%;" id="New Hampshire
-" onclick='check_state("New Hampshire")' ></button>
+          <button type="button" class="anybutton" style="top:28%; left:80%;" id="Massachusetts" onclick='check_state("Massachusetts")' ></button>
+          <button type="button" class="anybutton" style="top:30%; left:81%;" id="Rhode Island" onclick='check_state("Rhode Island")' ></button>
+          <button type="button" class="anybutton" style="top:22%; left:79%;" id="New Hampshire" onclick='check_state("New Hampshire")' ></button>
           <button type="button" class="anybutton" style="top:18%; left:81%;" id="Maine" onclick='check_state("Maine")' ></button>
           <button type="button" class="anybutton" style="top:40%; left:68%;" id="Ohio" onclick='check_state("Ohio")' ></button>
           <button type="button" class="anybutton" style="top:50%; left:66%;" id="Kentucky" onclick='check_state("Kentucky")' ></button>
@@ -141,7 +139,7 @@
           <button type="button" class="anybutton" style="top:31%; left:59%;" id="Wisconsin" onclick='check_state("Wisconsin")' ></button>
           <button type="button" class="anybutton" style="top:56%; left:66%;" id="Tennessee" onclick='check_state("Tennessee")' ></button>
           <button type="button" class="anybutton" style="top:65%; left:60%;" id="Mississippi" onclick='check_state("Mississippi")' ></button>
-          <button type="button" class="anybutton" style="top:70%; left:56%;" id="Louisiana" onclick='check_state("Louisiana")' ></button>
+          <button type="button" class="anybutton" style="top:71%; left:56%;" id="Louisiana" onclick='check_state("Louisiana")' ></button>
           <button type="button" class="anybutton" style="top:66%; left:46%;" id="Texas" onclick='check_state("Texas")' ></button>
           <button type="button" class="anybutton" style="top:60%; left:56%;" id="Arkansas" onclick='check_state("Arkansas")' ></button>
           <button type="button" class="anybutton" style="top:51%; left:56%;" id="Missouri" onclick='check_state("Missouri")' ></button>
@@ -159,7 +157,7 @@
           <button type="button" class="anybutton" style="top:60%; left:50%;" id="Oklahoma" onclick='check_state("Oklahoma")' ></button>
           <button type="button" class="anybutton" style="top:50%; left:50%;" id="Kansas" onclick='check_state("Kansas")' ></button>
           <button type="button" class="anybutton" style="top:41%; left:50%;" id="Nebraska" onclick='check_state("Nebraska")' ></button>
-          <button type="button" class="anybutton" style="top:39%; left:76%;" id="Washington, D.C." onclick='check_state("Washington, D.C.")' ></button>
+          <button type="button" class="anybutton" style="top:40%; left:76%;" id="Washington, D.C." onclick='check_state("Washington, D.C.")' ></button>
           <button type="button" class="anybutton" style="top:80%; left:22%;" id="Alaska" onclick='check_state("Alaska")' ></button>
           <button type="button" class="anybutton" style="top:94%; left:40%;" id="Hawaii" onclick='check_state("Hawaii")' ></button>
        </div>
@@ -236,7 +234,6 @@ function getPosition(el) {
           if (document.getElementById("state").innerHTML== chosen_state){
             document.getElementById(chosen_state).style.backgroundColor = 'red';
             score ++;
-            alert("Hello! I am an alert box!!");
             //document.getElementById(chosen_state).style.background = red;
             random_state();
             game_over();
@@ -247,7 +244,7 @@ function getPosition(el) {
         }
 
        function game_over(){
-        if (score==2){
+        if (score==51){
           var today = new Date();
           var end_time = today.getMinutes();
           //in case the hour has changed 

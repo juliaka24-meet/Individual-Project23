@@ -92,38 +92,26 @@ section{
 ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
+p {
+  color:white;
+  text-align: center;
+}
 </style>
 
 <section>
   <!--for demo wrap-->
-  <h1>Fixed Table header</h1>
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>RANK</th>
-          <th>Username</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-        <tr>
+  <h1>RANK</h1>
           
           {%for score_value in list_scores%}
           {%for score in scores%}
           {%if score_value == scores[score]["final_score"]%}
-                    <br>
-          <td>rank</td>
-          <td>{{scores[score]["username"]}}</td>
-          <td>{{scores[score]["final_score"]}}</td>
+          <p> user: {{scores[score]["username"]}}, score: {{scores[score]["final_score"]}}</p>
           <br>
+
           {%endif%}
           {%endfor%}
           {%endfor%}
+
         </tr>
   <script>$(window).on("load resize ", function() {
   var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();

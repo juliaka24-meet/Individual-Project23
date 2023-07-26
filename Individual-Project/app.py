@@ -36,7 +36,7 @@ def signin():
         
         try:
             login_session["user"] = auth.sign_in_with_email_and_password(email, password)
-            return redirect(url_for('map'))
+            return redirect(url_for('games'))
         except:
             return render_template("signin.html")
 
