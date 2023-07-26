@@ -65,8 +65,15 @@ def signup():
 def map():
     if request.method ==  "POST":
         UID = login_session['user']['localId']
+        username = db.child('Users').child(UID).child('username').get().val()
         final_score = request.form["jsvar"]
         print(final_score)
+        score_dict = {'username':username,'final_score':final_score}
+        try:
+            db.child('Scores').child(UID).set(score_dict)
+            return redirect(url_for('ranking.html'))
+        except:
+            return render_template('map.html')
         return render_template('map.html')
     return render_template('map.html')
 
