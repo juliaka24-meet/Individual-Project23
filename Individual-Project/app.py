@@ -7,7 +7,6 @@ from datetime import datetime
 now = datetime.now()
 
 current_time = now.strftime("%H:%M:%S")
-print("Current Time =", current_time)
 
 config = {
   "apiKey": "AIzaSyBSZBOwpX2T3jOQL7OH8gHe6PHHuKP0XA8",
@@ -63,6 +62,7 @@ def signup():
 
 @app.route('/map', methods = ["GET", "POST"])
 def map():
+    global list_scores
     if request.method ==  "POST":
         UID = login_session['user']['localId']
         username = db.child('Users').child(UID).child('username').get().val()
@@ -71,14 +71,17 @@ def map():
         score_dict = {'username':username,'final_score':final_score}
         try:
             db.child('Scores').child(UID).set(score_dict)
-            return redirect(url_for('ranking.html'))
+            return redirect(url_for('ranking'))
         except:
             return render_template('map.html')
         return render_template('map.html')
     return render_template('map.html')
 
 
-
+@app.route('/ranking')
+def ranking():
+    return render_template('ranking.html')
+   
 
 
 if __name__ == '__main__':
