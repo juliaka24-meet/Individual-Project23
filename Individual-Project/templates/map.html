@@ -68,8 +68,8 @@
        z-index: 2;
        background: orange; 
        display:block;
-       height: 30px;
-       width: 30px;
+       height: 20px;
+       width: 20px;
        border-radius: 50%;
        border: 1px solid red;
 
@@ -108,11 +108,11 @@
         <div class="mycenter" id="contentContainer">
 <img id="thing" src="static/usmap2.png">
 </div>
-          <button type="button" class="anybutton" style="transform: translate(600%, -270%);" id="Washington" 
+          <button type="button" class="anybutton" style="top:20%; left:23%;" id="Washington" 
           onclick='check_state("Washington")'></button>
-          <button type="button" class="anybutton" style="transform: translate(550%, 370%);"  id="California" onclick='check_state("California")' ></button>
-          <button type="button" class="anybutton" style="transform: translate(600%, 90%);" id="Oregon" onclick='check_state("Oregon")' ></button>
-          <button type="button" class="anybutton" style="transform: translate(985%, -90%);" id="Idaho" onclick='check_state("Idaho")' ></button>
+          <button type="button" class="anybutton" style="top:55%; left:23%;"  id="California" onclick='check_state("California")' ></button>
+          <button type="button" class="anybutton" style="top:32%; left:23%;" id="Oregon" onclick='check_state("Oregon")' ></button>
+          <button type="button" class="anybutton" style="top:32%; left:30%;" id="Idaho" onclick='check_state("Idaho")' ></button>
           <button type="button" class="anybutton" style="top:65%; left:65%;" id="Alabama" onclick='check_state("Alabama")' ></button>
           <button type="button" class="anybutton" style="top:64%; left:70%;" id="Georgia" onclick='check_state("Georgia")' ></button>
           <button type="button" class="anybutton" style="top:68%; left:70%;" id="Florida" onclick='check_state("Florida")' ></button>
@@ -125,7 +125,11 @@
           <button type="button" class="anybutton" style="top:35%; left:77%;" id="New Jersey" onclick='check_state("New Jersey")' ></button>
           <button type="button" class="anybutton" style="top:35%; left:72%;" id="Pennsylvania" onclick='check_state("Pennsylvania")' ></button>
           <button type="button" class="anybutton" style="top:29%; left:72%;" id="New York" onclick='check_state("New York")' ></button>
-          
+          <button type="button" class="anybutton" style="top:22%; left:77%;" id="Vermont" onclick='check_state("Vermont")' ></button>
+          <button type="button" class="anybutton" style="top:29%; left:78%;" id="Rhode Island" onclick='check_state("Rhode Island")' ></button>
+          <button type="button" class="anybutton" style="top:26%; left:78%;" id="Massachusetts
+" onclick='check_state("Massachusetts")' ></button>
+
        </div>
 
       <form id="Final_score" action="/map" method="post">
